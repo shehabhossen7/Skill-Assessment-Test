@@ -1,28 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const NewTodo = ({ setTodos }) => {
-  const listtodo = [
-    {
-      id: 1,
-      name: "kjhab",
-      description: "hdh jhbfg jbujdf jhu",
-    },
-    {
-      id: 1,
-      name: "kjhab",
-      description: "hdh jhbfg jbujdf jhu",
-    },
-  ];
-
+const NewTodo = ({ setTodos, todos }) => {
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
     const taskName = data.name;
-    const Description = data.description;
-    const todoList = { taskName, Description };
-
-    setTodos(todoList);
-    console.log(data);
+    const description = data.description;
+    const todoList = { taskName, description };
+    const newTodo = [...todos, todoList];
+    setTodos(newTodo);
   };
   return (
     <div className="border-2 rounded-md p-2 w-96 mx-auto p-10 mt-10 text-left">
